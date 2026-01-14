@@ -3,22 +3,28 @@ The code supports reproducible analysis of perceptual media quality and system p
 
 Installation steps and scripts to execute are uploaded in respective folder for analysis as below
 
-PEAQ 
+**PEAQ**
 
 https://github.com/Priyankapopuri08/SmartphoneQualityAnalysis/tree/main/PEAQ
 
-OPVQ
+**OPVQ**
 
 https://github.com/Priyankapopuri08/SmartphoneQualityAnalysis/tree/main/OPVQ
 
-VMAF
+**VMAF**
 
 https://github.com/Priyankapopuri08/SmartphoneQualityAnalysis/tree/main/VMAF
 
-PESQ
+**PESQ**
 
 https://github.com/Priyankapopuri08/SmartphoneQualityAnalysis/tree/main/PESQ
 
+**Citation**
 
+@inproceedings{usedsmartphones,
+  title={Measuring Intra-Model Performance Degradation in Used Smartphones},
+  author={Anonymous},
+  year={2026}
+}
 
 
