@@ -44,10 +44,10 @@ Camera_Quality_Analysis/
 │       ├── run_il_niqe.py
 │       └── README.md
 │
-├── sample_images/                        # Test captures across 9 phone instances (45 images)
-│   ├── Oppo_A37_{2016,2017,2018}/        # 5 images per year (daylight, indoor, lowlight)
-│   ├── Vivo_Y67_{2016,2017,2018}/        # 5 images per year (daylight, indoor, lowlight)
-│   └── Redmi_5A_{2016,2017,2018}/        # 5 images per year (daylight, indoor, lowlight)
+├── sample_images/                        # Test captures across 9 phones (27 unique images: daylight, indoor, lowlight)
+│   ├── Oppo_A37_{2016,2017,2018}_{daylight,indoor,lowlight}.jpg
+│   ├── Vivo_Y67_{2016,2017,2018}_{daylight,indoor,lowlight}.jpg
+│   └── Redmi_5A_{2016,2017,2018}_{daylight,indoor,lowlight}.jpg
 │
 ├── Camera_Quality_Installation_Guide.docx # Formatted Word Installation Guide (matches OPVQ guide)
 ├── requirements.txt                      # Python dependencies

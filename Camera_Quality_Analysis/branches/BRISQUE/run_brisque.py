@@ -10,7 +10,7 @@ from brisque import compute_raw_brisque
 from logistic_mapping import map_score
 
 def main():
-    target = sys.argv[1] if len(sys.argv) > 1 else os.path.join(os.path.dirname(__file__), "../../sample_images/Oppo_A37_2018_daylight_1.jpg")
+    target = sys.argv[1] if len(sys.argv) > 1 else os.path.join(os.path.dirname(__file__), "../../sample_images/Oppo_A37_2018_daylight.jpg")
     
     if os.path.exists(target):
         raw_score = compute_raw_brisque(target)
