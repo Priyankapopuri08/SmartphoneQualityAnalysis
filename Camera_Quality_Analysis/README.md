@@ -1,13 +1,5 @@
 # Camera Quality Analysis
 
-This directory contains the complete source code and experimental framework for **Camera Quality Analysis**, matching the methodology, formulas, and results presented in:
-
-> **"How to Choose your Pre-owned Smartphone?": A Multi-Dimensional Benchmarking of Performance and Quality**  
-> *Priyanka Chowdary Popuri, Dipanjan Chakraborty*  
-> *Department of Computer Science and Information Systems, BITS Pilani, Hyderabad Campus*
-
----
-
 ## Overview
 
 Smartphone camera evaluation in this study assesses intra-model performance degradation in aging Android smartphones across three standardized capture scenarios (Section 3.8):
