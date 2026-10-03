@@ -10,7 +10,7 @@ from il_niqe import compute_raw_il_niqe
 from logistic_mapping import map_score
 
 def main():
-    target = sys.argv[1] if len(sys.argv) > 1 else os.path.join(os.path.dirname(__file__), "../../sample_images/low_light_2018.jpg")
+    target = sys.argv[1] if len(sys.argv) > 1 else os.path.join(os.path.dirname(__file__), "../../sample_images/Redmi_5A_2018_lowlight_1.jpg")
     
     if os.path.exists(target):
         raw_score = compute_raw_il_niqe(target)
