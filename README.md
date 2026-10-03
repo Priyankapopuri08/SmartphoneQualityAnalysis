@@ -43,7 +43,7 @@ Installation steps and scripts to execute are uploaded in https://github.com/Pri
 
 **Purpose:** Camera Quality Analysis evaluates perceptual imaging performance and intra-model degradation in smartphone cameras using no-reference image quality assessment (NR-IQA) and human perceptual rankings.
 
-**Usage in this study:** Three NR-IQA algorithms—BRISQUE, NIQE, and IL-NIQE—are applied to photographs captured across daylight outdoor, indoor lighting, and low-light scenarios. Objective scores are mapped to perceptual ratings using a 5-parameter logistic function and validated against subjective human Mean Rank (MR) using SRCC, PLCC, and RMSE correlation metrics.
+**Usage in this study:** Three NR-IQA algorithms BRISQUE, NIQE, and IL-NIQE are applied to photographs captured across daylight outdoor, indoor lighting, and low-light scenarios. Objective scores are mapped to perceptual ratings using a 5-parameter logistic function and validated against subjective human Mean Rank (MR) using SRCC, PLCC, and RMSE correlation metrics.
 
 **Notes:** Camera evaluation employs no-reference metrics, making it suitable for realistic smartphone photography without pristine reference targets. Mapped quality scores range from 1 to 5, where higher values indicate superior perceptual image quality.
 Installation steps and scripts to execute are uploaded in https://github.com/Priyankapopuri08/SmartphoneQualityAnalysis/tree/main/Camera_Quality_Analysis
