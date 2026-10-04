@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 """
 Camera Quality Analysis - Unified End-to-End Pipeline
 Based on:
@@ -17,7 +18,6 @@ import os
 import sys
 import json
 import argparse
-import numpy as np
 
 # Add local directory to path for imports
 current_dir = os.path.dirname(os.path.abspath(__file__))
