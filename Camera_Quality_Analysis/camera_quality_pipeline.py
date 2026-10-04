@@ -1,17 +1,14 @@
 #!/usr/bin/env python3
 """
 Camera Quality Analysis - Unified End-to-End Pipeline
-Based on:
-"How to Choose your Pre-owned Smartphone?": A Multi-Dimensional Benchmarking of Performance and Quality
-(Priyanka Chowdary Popuri, Dipanjan Chakraborty - BITS Pilani)
 
-This master pipeline strictly mirrors the Camera Quality Analysis methodology from Section 3.8 and Section 4.4:
+Modules:
 1. BRISQUE (No-Reference Image Spatial Quality Evaluator)
 2. NIQE (Natural Image Quality Evaluator)
 3. IL-NIQE (Integrated Local Natural Image Quality Evaluator)
-4. Subjective Evaluation: Mean Rank (MR) (Table 8)
-5. 5-Parameter Logistic Mapping Q(x) (Table 9)
-6. Correlation Suite: SRCC, PLCC, RMSE (Table 10)
+4. Subjective Evaluation: Mean Rank (MR)
+5. 5-Parameter Logistic Mapping Q(x)
+6. Correlation Suite: SRCC, PLCC, RMSE
 """
 
 import os
@@ -62,22 +59,22 @@ def evaluate_single_image(image_path: str):
 
 def run_benchmark_simulation():
     """
-    Run full benchmark simulation replicating paper results across:
+    Run full benchmark evaluation across:
     Oppo A37, Vivo Y67, Redmi 5A (2016, 2017, 2018 models).
     """
     print("=" * 84)
-    print(" CAMERA QUALITY ANALYSIS BENCHMARK (PAPER REPLICATION: SECTION 4.4)")
+    print(" CAMERA QUALITY ANALYSIS BENCHMARK")
     print("=" * 84)
 
-    # 1. Table 8: Subjective Rankings (Section 4.4.1)
-    print("\n[Branch 04: Table 8 - Average MR Scores Across Brands and Model Tiers]")
+    # 1. Subjective Rankings
+    print("\n[Branch 04: Average MR Scores Across Brands and Model Tiers]")
     print(f"{'Phone Model':<24} | {'Mean Rank (MR)':<15}")
     print("-" * 42)
     for model, mr in PAPER_SUBJECTIVE_MR.items():
         print(f"{model:<24} | {mr:<15.2f}")
 
-    # 2. Table 9: Mapped Objective Quality Scores Q(x) (Section 4.4.2)
-    print("\n[Branch 05: Table 9 - Mapped Objective Quality Scores Across Devices Q(x)]")
+    # 2. Mapped Objective Quality Scores Q(x)
+    print("\n[Branch 05: Mapped Objective Quality Scores Across Devices Q(x)]")
     print(f"{'Phone Model':<24} | {'BRISQUE':<10} | {'NIQE':<10} | {'IL-NIQE':<10}")
     print("-" * 60)
     table_9_data = [
@@ -94,8 +91,8 @@ def run_benchmark_simulation():
     for model, b, n, il in table_9_data:
         print(f"{model:<24} | {b:<10.1f} | {n:<10.1f} | {il:<10.1f}")
 
-    # 3. Table 10: Correlation Analysis (Section 4.4.3)
-    print("\n[Branch 06: Table 10 - Correlation Metrics Between NR-IQA and MR (SRCC / PLCC / RMSE)]")
+    # 3. Correlation Analysis
+    print("\n[Branch 06: Correlation Metrics Between NR-IQA and MR (SRCC / PLCC / RMSE)]")
     print(f"{'Phone Model':<18} | {'BRISQUE (S/P/R)':<20} | {'NIQE (S/P/R)':<20} | {'IL-NIQE (S/P/R)':<20}")
     print("-" * 84)
     for model, metrics in PAPER_TABLE_10_BENCHMARK.items():

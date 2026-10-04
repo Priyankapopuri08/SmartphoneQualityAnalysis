@@ -1,12 +1,6 @@
 """
 IL-NIQE: Integrated Local Natural Image Quality Evaluator
-Based on Zhang, Zhang, and Bovik,
-"A Feature-Enriched Completely Blind Image Quality Evaluator",
-IEEE Transactions on Image Processing, 2015.
-
-Used for Camera Quality Analysis in:
-"How to Choose your Pre-owned Smartphone?": A Multi-Dimensional Benchmarking of Performance and Quality
-(Popuri & Chakraborty)
+Computes No-Reference Integrated Local Natural Image Quality score.
 """
 
 import os

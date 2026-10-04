@@ -1,11 +1,6 @@
 """
 NIQE: Natural Image Quality Evaluator
-Based on Mittal, Soundararajan, and Bovik,
-"Making a 'Completely Blind' Image Quality Analyzer", IEEE Signal Processing Letters, 2013.
-
-Used for Camera Quality Analysis in:
-"How to Choose your Pre-owned Smartphone?": A Multi-Dimensional Benchmarking of Performance and Quality
-(Popuri & Chakraborty)
+Computes No-Reference Natural Image Quality score.
 """
 
 import os

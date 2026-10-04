@@ -1,8 +1,5 @@
 """
 Logistic Mapping: Q(x)
-Based on Section 3.4 & Section 4.4.2 of:
-"How to Choose your Pre-owned Smartphone?": A Multi-Dimensional Benchmarking of Performance and Quality
-(Popuri & Chakraborty)
 
 Formula:
     Q(x) = beta_1 * (1/2 - 1 / (1 + exp(beta_2 * (x - beta_3)))) + beta_4 * x + beta_5

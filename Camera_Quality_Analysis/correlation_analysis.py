@@ -1,8 +1,5 @@
 """
 Correlation Analysis: SRCC, PLCC, and RMSE
-Based on Section 3.4 & Section 4.4.3 of:
-"How to Choose your Pre-owned Smartphone?": A Multi-Dimensional Benchmarking of Performance and Quality
-(Popuri & Chakraborty)
 
 Formulas:
 1. Spearman Rank-Order Correlation Coefficient (SRCC):

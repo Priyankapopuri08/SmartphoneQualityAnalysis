@@ -1,6 +1,4 @@
 # Dependencies for Camera Quality Analysis
-# Based on "How to Choose your Pre-owned Smartphone?": A Multi-Dimensional Benchmarking of Performance and Quality
-# (Popuri & Chakraborty)
 
 numpy>=1.20.0
 scipy>=1.7.0

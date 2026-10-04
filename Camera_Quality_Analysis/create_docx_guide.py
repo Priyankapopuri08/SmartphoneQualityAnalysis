@@ -40,7 +40,7 @@ def build_docx(filename):
     sections = [
         ("Camera Quality Analysis: Installation & Execution Guide", "title"),
         ("Overview", "heading"),
-        ("This document provides a step-by-step installation guide for setting up a working Camera Quality Analysis environment matching the methodology and formulas from: 'How to Choose your Pre-owned Smartphone?: A Multi-Dimensional Benchmarking of Performance and Quality' (Popuri & Chakraborty, Section 3.8 and Section 4.4).", "body"),
+        ("This document provides a step-by-step installation guide for setting up a working Camera Quality Analysis environment for NR-IQA benchmarking (BRISQUE, NIQE, and IL-NIQE).", "body"),
         ("System Requirements", "heading"),
         ("- Ubuntu 20.04 / 22.04 / 24.04 or WSL (Ubuntu)\n- Python 3.8 or higher\n- Standard Scientific Python Libraries: numpy, scipy, pandas, Pillow", "body"),
         ("Step 1: Update System", "heading"),

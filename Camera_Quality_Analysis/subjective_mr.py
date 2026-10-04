@@ -1,8 +1,5 @@
 """
 Subjective Evaluation: Mean Rank (MR)
-Based on Section 3.4 & Section 4.4.1 of:
-"How to Choose your Pre-owned Smartphone?": A Multi-Dimensional Benchmarking of Performance and Quality
-(Popuri & Chakraborty)
 
 Formula:
     MR_j = (1 / N) * sum_{i=1}^N r_{ij}
