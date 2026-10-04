@@ -49,7 +49,6 @@ cmd = [
         f"log_fmt=json:log_path={output_json}"
     ),
     "-f", "null", "-"
-    "-f", "null", "-"
 ]
 
 print("Running VMAF...")
