@@ -22,5 +22,5 @@ python3 run_brisque.py [path_to_image]
 ```
 Example:
 ```bash
-python3 run_brisque.py ../../sample_images/daylight_outdoor_2018.jpg
+python3 run_brisque.py ../../sample_images/Oppo_A37_2018_daylight.jpg
 ```

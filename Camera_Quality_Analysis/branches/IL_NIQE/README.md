@@ -18,5 +18,5 @@ python3 run_il_niqe.py [path_to_image]
 ```
 Example:
 ```bash
-python3 run_il_niqe.py ../../sample_images/low_light_2018.jpg
+python3 run_il_niqe.py ../../sample_images/Redmi_5A_2018_lowlight.jpg
 ```
