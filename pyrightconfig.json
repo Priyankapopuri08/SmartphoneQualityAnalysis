@@ -1,0 +1,16 @@
+{
+  "include": [
+    ".",
+    "Camera_Quality_Analysis",
+    "OPVQ",
+    "PEAQ",
+    "PESQ",
+    "VMAF"
+  ],
+  "extraPaths": [
+    "C:/Users/saivi/AppData/Local/Programs/Python/Python312/Lib/site-packages",
+    "Camera_Quality_Analysis"
+  ],
+  "reportMissingImports": "none",
+  "reportMissingModuleSource": "none"
+}
