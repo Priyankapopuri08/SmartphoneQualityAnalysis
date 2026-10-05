@@ -7,8 +7,15 @@
     "PESQ",
     "VMAF"
   ],
+  "exclude": [
+    "**/node_modules",
+    "**/__pycache__",
+    ".venv"
+  ],
+  "venvPath": ".",
+  "venv": ".venv",
   "extraPaths": [
-    "C:/Users/saivi/AppData/Local/Programs/Python/Python312/Lib/site-packages",
+    ".venv/Lib/site-packages",
     "Camera_Quality_Analysis"
   ],
   "reportMissingImports": "none",
