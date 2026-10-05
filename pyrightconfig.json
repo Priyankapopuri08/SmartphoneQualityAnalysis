@@ -19,5 +19,6 @@
     "Camera_Quality_Analysis"
   ],
   "reportMissingImports": "none",
-  "reportMissingModuleSource": "none"
+  "reportMissingModuleSource": "none",
+  "reportMissingTypeStubs": "none"
 }
