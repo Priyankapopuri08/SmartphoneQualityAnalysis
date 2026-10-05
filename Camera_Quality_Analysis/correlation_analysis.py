@@ -94,19 +94,6 @@ def evaluate_correlation_suite(objective_scores, subjective_scores):
         "RMSE": round(rmse, 4)
     }
 
-# Ground truth benchmarks reported in Table 10 of the paper
-PAPER_TABLE_10_BENCHMARK = {
-    "Oppo A37 2016": {"BRISQUE": [0.91, 0.997, 0.097], "NIQE": [0.89, 0.994, 0.113], "IL-NIQE": [0.92, 0.994, 0.093]},
-    "Oppo A37 2017": {"BRISQUE": [0.94, 0.997, 0.094], "NIQE": [0.92, 0.995, 0.117], "IL-NIQE": [0.93, 0.998, 0.089]},
-    "Oppo A37 2018": {"BRISQUE": [0.98, 0.998, 0.093], "NIQE": [0.96, 0.998, 0.119], "IL-NIQE": [0.96, 0.998, 0.087]},
-    "Vivo Y67 2016": {"BRISQUE": [0.92, 0.987, 0.094], "NIQE": [0.92, 0.996, 0.118], "IL-NIQE": [0.94, 0.997, 0.091]},
-    "Vivo Y67 2017": {"BRISQUE": [0.96, 0.994, 0.092], "NIQE": [0.95, 0.997, 0.122], "IL-NIQE": [0.95, 0.998, 0.086]},
-    "Vivo Y67 2018": {"BRISQUE": [1.00, 0.997, 0.084], "NIQE": [0.97, 0.999, 0.127], "IL-NIQE": [0.98, 0.998, 0.083]},
-    "Redmi 5A 2016": {"BRISQUE": [0.84, 0.967, 0.098], "NIQE": [0.82, 0.984, 0.109], "IL-NIQE": [0.85, 0.972, 0.097]},
-    "Redmi 5A 2017": {"BRISQUE": [0.87, 0.975, 0.097], "NIQE": [0.84, 0.989, 0.114], "IL-NIQE": [0.86, 0.981, 0.093]},
-    "Redmi 5A 2018": {"BRISQUE": [0.91, 0.981, 0.093], "NIQE": [0.87, 0.994, 0.118], "IL-NIQE": [0.89, 0.987, 0.091]},
-}
-
 if __name__ == "__main__":
     print("===== CORRELATION SUITE (SRCC, PLCC, RMSE) TEST =====")
     # Verification with synthetic paired observations
