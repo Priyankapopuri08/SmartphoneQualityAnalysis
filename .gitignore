@@ -3,4 +3,20 @@ __pycache__/
 *$py.class
 .vscode/
 .idea/
+.venv/
+
+# Evaluation outputs, benchmark results, and generated datasets
 camera_quality_results.json
+camera_quality_summary.csv
+vmaf_result.json
+vmaf_frame_scores.csv
+wget-log
+
+# Generated test media and intermediate analysis artifacts
+*.png
+*compressed.mp4
+*temp*.wav
+*16k*.wav
+OPVQ/*.json
+VMAF/*.json
+VMAF/*.csv
