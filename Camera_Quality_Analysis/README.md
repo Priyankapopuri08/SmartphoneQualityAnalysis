@@ -82,17 +82,25 @@ Maps raw objective scores $x$ to perceptual quality scale $Q(x) \in [1, 5]$ (hig
 pip install -r requirements.txt
 ```
 
-### 2. Run Unified Paper Replication Benchmark (Tables 8, 9, and 10)
+### 2. Run Unified Benchmark with Custom Subjective Rankings
+You can calculate Subjective Mean Rank (MR) directly from any external CSV or JSON file:
 ```bash
-python3 camera_quality_pipeline.py
+python3 camera_quality_pipeline.py --rankings sample_subjective_rankings.csv
+```
+*(If `--rankings` is omitted, the pipeline defaults to dynamic objective score rankings as a baseline).*
+
+### 3. Calculate Subjective Mean Rank (MR) Standalone
+You can also calculate Mean Rank directly on any participant evaluation file:
+```bash
+python3 subjective_mr.py sample_subjective_rankings.csv
 ```
 
-### 3. Evaluate Any Single Image File
+### 4. Evaluate Any Single Image File
 ```bash
 python3 camera_quality_pipeline.py --image sample_images/daylight_outdoor_2018.jpg
 ```
 
-### 4. Run an Individual Branch
+### 5. Run an Individual Branch
 ```bash
 cd branches/BRISQUE && python3 run_brisque.py ../../sample_images/daylight_outdoor_2018.jpg
 cd branches/NIQE && python3 run_niqe.py ../../sample_images/indoor_lighting_2018.jpg

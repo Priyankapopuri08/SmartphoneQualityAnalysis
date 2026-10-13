@@ -27,7 +27,7 @@ if current_dir not in sys.path:
 from brisque import compute_raw_brisque
 from niqe import compute_raw_niqe
 from il_niqe import compute_raw_il_niqe
-from subjective_mr import compute_mean_rank
+from subjective_mr import compute_mean_rank, load_rankings_from_file, normalize_device_key
 from logistic_mapping import map_score
 from correlation_analysis import evaluate_correlation_suite
 
@@ -61,12 +61,12 @@ def evaluate_single_image(image_path: str):
         }
     }
 
-def run_dynamic_benchmark(images_dir: Optional[str] = None, output_json: str = "camera_quality_results.json", output_csv: str = "camera_quality_summary.csv"):
+def run_dynamic_benchmark(images_dir: Optional[str] = None, rankings_file: Optional[str] = None, output_json: str = "camera_quality_results.json", output_csv: str = "camera_quality_summary.csv"):
     """
     Dynamically evaluate and generate all camera quality benchmark data:
     1. Extract BRISQUE, NIQE, IL-NIQE across all smartphone image files.
     2. Compute mapped perceptual scores Q(x) via 5-parameter logistic mapping.
-    3. Compute subjective Mean Rank (MR) dynamically across models and tiers.
+    3. Compute subjective Mean Rank (MR) dynamically from participant rankings or objective baseline.
     4. Compute dynamic correlation statistics: SRCC, PLCC, RMSE.
     5. Save generated results to JSON and CSV.
     """
@@ -156,39 +156,39 @@ def run_dynamic_benchmark(images_dir: Optional[str] = None, output_json: str = "
 
     # 3. Dynamic Mean Rank (MR) Calculation
     print("\n[Step 3/4: Subjective Evaluation & Mean Rank (MR) Calculation]")
-    print(f"{'Phone Model':<24} | {'Dynamically Computed MR':<24} | {'Perceptual Tier':<15}")
-    print("-" * 70)
+    print(f"{'Phone Model':<24} | {'Computed MR':<20} | {'Perceptual Tier':<15}")
+    print("-" * 64)
 
-    # Invert average mapped score to rank (Higher quality score -> Lower/Better Rank)
-    sorted_devs = sorted(device_summary.keys(), key=lambda d: device_summary[d]["Overall_Qx"], reverse=True)
-    rank_lookup = {}
-    for rank_idx, dev in enumerate(sorted_devs, 1):
-        # Base rank assigned by dynamic performance
-        rank_lookup[dev] = float(rank_idx)
-
-    # Simulate multi-evaluator ranking matrix based on dynamically measured image quality
-    evaluator_rank_matrix = []
-    np.random.seed(42)
-    num_evaluators = 15
     dev_keys = list(device_summary.keys())
-    
-    for _ in range(num_evaluators):
-        eval_row = []
+
+    if rankings_file:
+        print(f"  -> Loading participant rankings from: {rankings_file}")
+        external_mr_map = load_rankings_from_file(rankings_file)
+        # Normalize external keys for robust fuzzy matching
+        norm_external = {normalize_device_key(k): (k, v) for k, v in external_mr_map.items()}
+
         for dev in dev_keys:
-            base_r = rank_lookup[dev]
-            # realistic participant score variance (+/- 0.2)
-            jittered_rank = max(1.0, base_r + np.random.normal(0, 0.15))
-            eval_row.append(jittered_rank)
-        evaluator_rank_matrix.append(eval_row)
+            norm_dev = normalize_device_key(dev)
+            if norm_dev in norm_external:
+                mr_val = float(norm_external[norm_dev][1])
+            else:
+                print(f"  [Warning] '{dev}' not found in rankings file. Fallback to objective performance rank.")
+                sorted_devs = sorted(dev_keys, key=lambda d: device_summary[d]["Overall_Qx"], reverse=True)
+                mr_val = float(sorted_devs.index(dev) + 1.0)
 
-    evaluator_rank_matrix = np.array(evaluator_rank_matrix)
-    computed_mrs = compute_mean_rank(evaluator_rank_matrix)
-
-    for i, dev in enumerate(dev_keys):
-        mr_val = float(computed_mrs[i])
-        device_summary[dev]["Mean_Rank_MR"] = round(mr_val, 2)
-        tier = "High Fidelity" if mr_val <= 3.0 else ("Moderate" if mr_val <= 6.0 else "Degraded")
-        print(f"{dev:<24} | {mr_val:<24.2f} | {tier:<15}")
+            device_summary[dev]["Mean_Rank_MR"] = round(mr_val, 2)
+            tier = "High Fidelity" if mr_val <= 3.0 else ("Moderate" if mr_val <= 6.0 else "Degraded")
+            print(f"{dev:<24} | {mr_val:<20.2f} | {tier:<15}")
+    else:
+        print("  [Info] No rankings file specified (--rankings <file.csv>).")
+        print("  -> Calculating rank baseline dynamically from objective performance (Overall Q(x)).")
+        print("  -> (Hint: Pass '--rankings <path_to_file>' to calculate MR from your participant rankings)\n")
+        sorted_devs = sorted(dev_keys, key=lambda d: device_summary[d]["Overall_Qx"], reverse=True)
+        for rank_idx, dev in enumerate(sorted_devs, 1):
+            mr_val = float(rank_idx)
+            device_summary[dev]["Mean_Rank_MR"] = round(mr_val, 2)
+            tier = "High Fidelity" if mr_val <= 3.0 else ("Moderate" if mr_val <= 6.0 else "Degraded")
+            print(f"{dev:<24} | {mr_val:<20.2f} | {tier:<15}")
 
     # 4. Dynamic Correlation Suite (SRCC, PLCC, RMSE) for Each Phone Separately
     print("\n[Step 4/4: Correlation Analysis (SRCC / PLCC / RMSE) for Each Phone Model & Metric]")
@@ -297,6 +297,7 @@ def main():
     parser = argparse.ArgumentParser(description="Smartphone Camera Quality Analysis Benchmark")
     parser.add_argument("--image", type=str, default=None, help="Path to single input image to analyze")
     parser.add_argument("--dir", type=str, default=None, help="Directory of test images to evaluate dynamically")
+    parser.add_argument("--rankings", type=str, default=None, help="Path to CSV or JSON file containing subjective participant rankings")
     parser.add_argument("--output_json", type=str, default="camera_quality_results.json", help="Output JSON path")
     parser.add_argument("--output_csv", type=str, default="camera_quality_summary.csv", help="Output CSV path")
     args = parser.parse_args()
@@ -317,7 +318,12 @@ def main():
             json.dump(res, f, indent=4)
         print(f"\nSaved results to {args.output_json}")
     else:
-        run_dynamic_benchmark(images_dir=args.dir, output_json=args.output_json, output_csv=args.output_csv)
+        run_dynamic_benchmark(
+            images_dir=args.dir,
+            rankings_file=args.rankings,
+            output_json=args.output_json,
+            output_csv=args.output_csv
+        )
 
 if __name__ == "__main__":
     main()
