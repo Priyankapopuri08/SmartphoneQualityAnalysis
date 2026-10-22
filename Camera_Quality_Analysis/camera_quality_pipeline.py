@@ -164,7 +164,6 @@ def run_dynamic_benchmark(images_dir: Optional[str] = None, rankings_file: Optio
     if rankings_file:
         print(f"  -> Loading participant rankings from: {rankings_file}")
         external_mr_map = load_rankings_from_file(rankings_file)
-        # Normalize external keys for robust fuzzy matching
         norm_external = {normalize_device_key(k): (k, v) for k, v in external_mr_map.items()}
 
         for dev in dev_keys:
@@ -327,4 +326,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
