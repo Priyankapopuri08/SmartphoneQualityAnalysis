@@ -4,8 +4,6 @@ Full-Reference Perceptual Video Quality Evaluation using OpenVQ.
 
 Usage:
   python opvq_mos.py
-  python opvq_mos.py reference.mp4 distorted.mp4
-  python opvq_mos.py --src reference.mp4 --pvs distorted.mp4
 """
 
 import os
